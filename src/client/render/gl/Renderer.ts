@@ -1,4 +1,4 @@
-import { isEmpireFrontStandalone } from "../../conquest/Project";
+import { isConquestStandalone } from "../../conquest/Project";
 /**
  * GPURenderer v2 — normalized render pipeline.
  *
@@ -237,7 +237,7 @@ export class GPURenderer {
     // the palette width, #4357) proceeds anyway; glLimited lets the owner
     // warn the player that the map may render with black areas.
     const softwareTestMode =
-      isEmpireFrontStandalone() &&
+      isConquestStandalone() &&
       new URLSearchParams(window.location.search).get("software-rendering") ===
         "1";
     const res = initGL(

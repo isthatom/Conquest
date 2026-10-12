@@ -1,4 +1,4 @@
-# EmpireFront architecture and roadmap
+# Conquest architecture and roadmap
 
 ## Concept and challenges
 Fast conquest should create pressure to invest without requiring city micromanagement. One treasury, civilians, soldiers and research progress are enough initially. Taxation should trade immediate income against growth; recruitment should trade civilian productivity against military power. Target a 20-minute default match, with a configurable 30-minute hard limit. Balance requires measured playtests, not a claim that an initial formula delivers the target duration.

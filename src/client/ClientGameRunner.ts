@@ -77,7 +77,7 @@ import {
 import { createCanvas } from "./Utils";
 import { WebGLFrameBuilder } from "./WebGLFrameBuilder";
 import { WorkerClient } from "./WorkerClient";
-import { isEmpireFrontStandalone } from "./conquest/Project";
+import { isConquestStandalone } from "./conquest/Project";
 import { MapLayerController } from "./controllers/MapLayerController";
 import { createRenderer, GameRenderer } from "./hud/GameRenderer";
 import { goldRateTracker } from "./hud/layers/lib/GoldRateTracker";
@@ -290,14 +290,14 @@ export function joinLobby(
         .then((r) => {
           currentGameRunner = r;
           r.start();
-          if (isEmpireFrontStandalone())
-            document.dispatchEvent(new Event("empirefront-game-ready"));
+          if (isConquestStandalone())
+            document.dispatchEvent(new Event("conquest-game-ready"));
         })
         .catch((e) => {
           console.error("error creating client game", e);
-          if (isEmpireFrontStandalone())
+          if (isConquestStandalone())
             document.dispatchEvent(
-              new CustomEvent("empirefront-game-failed", { detail: e }),
+              new CustomEvent("conquest-game-failed", { detail: e }),
             );
 
           currentGameRunner = null;

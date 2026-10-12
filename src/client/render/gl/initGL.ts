@@ -66,7 +66,7 @@ export function initGL(
     }
     if (SOFTWARE_RENDERER.test(renderer) && allowSoftwareForTesting) {
       console.warn(
-        "EmpireFront: software WebGL test mode; GPU performance is not validated.",
+        "Conquest: software WebGL test mode; GPU performance is not validated.",
       );
     }
     // Fingerprinting protection caps texture sizes on an otherwise

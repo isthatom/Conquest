@@ -49,7 +49,7 @@ import { ClientEnv, NoServerError } from "src/client/ClientEnv";
 import { getPlayToken } from "./Auth";
 import { LobbyConfig } from "./ClientGameRunner";
 import { clientPlatform } from "./ClientPlatform";
-import { isEmpireFrontStandalone } from "./conquest/Project";
+import { isConquestStandalone } from "./conquest/Project";
 import { isDesktopShell } from "./DesktopShell";
 import { showInGameConfirm } from "./InGameModal";
 import {
@@ -697,7 +697,7 @@ export class Transport {
 
   async joinGame() {
     // The local server already owns the sole player; no account token is needed.
-    if (this.isLocal && isEmpireFrontStandalone()) return;
+    if (this.isLocal && isConquestStandalone()) return;
     // Only the first join: the token is short-lived, and a later reconnect
     // must not present one that has since expired.
     const token = this.lobbyConfig.creatorToken ?? (await getPlayToken());
@@ -724,7 +724,7 @@ export class Transport {
       // Note: clientID is not sent - server looks it up from persistentID in token
       lastTurn: lastTurn,
       token:
-        this.isLocal && isEmpireFrontStandalone()
+        this.isLocal && isConquestStandalone()
           ? "local-singleplayer"
           : await getPlayToken(),
       gitCommit: ClientEnv.gitCommit(),

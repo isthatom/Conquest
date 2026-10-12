@@ -1,7 +1,7 @@
 import { LitElement, html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { adGatekeeper } from "../../AdGatekeeper";
-import { isEmpireFrontStandalone } from "../../conquest/Project";
+import { isConquestStandalone } from "../../conquest/Project";
 import { Controller } from "../../Controller";
 import { GameView } from "../../view";
 
@@ -29,7 +29,7 @@ export class InGamePromo extends LitElement implements Controller {
   init() {}
 
   tick() {
-    if (isEmpireFrontStandalone()) return;
+    if (isConquestStandalone()) return;
     if (!this.game.inSpawnPhase()) {
       if (!this.bottomRailDestroyed) {
         this.bottomRailDestroyed = true;

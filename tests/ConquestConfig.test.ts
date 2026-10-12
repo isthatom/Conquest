@@ -6,9 +6,9 @@ import {
 } from "@openfront/engine-api/game/GameTypes";
 import { describe, expect, it } from "vitest";
 import { createMatchConfig } from "../src/client/conquest/MatchConfig";
-import { isEmpireFrontStandalone } from "../src/client/conquest/Project";
+import { isConquestStandalone } from "../src/client/conquest/Project";
 
-describe("EmpireFront local expeditions", () => {
+describe("Conquest local expeditions", () => {
   it("uses a validated local game with finite resources and a twenty-minute cap", () => {
     const config = createMatchConfig(20, Difficulty.Easy);
     expect(config.gameType).toBe(GameType.Singleplayer);
@@ -32,9 +32,9 @@ describe("EmpireFront local expeditions", () => {
       expect(() => createMatchConfig(bots, Difficulty.Easy)).toThrow();
   });
   it("isolates derivative-only behavior from inherited workflows", () => {
-    expect(isEmpireFrontStandalone()).toBe(false);
-    document.documentElement.dataset.project = "empirefront";
-    expect(isEmpireFrontStandalone()).toBe(true);
+    expect(isConquestStandalone()).toBe(false);
+    document.documentElement.dataset.project = "conquest";
+    expect(isConquestStandalone()).toBe(true);
     delete document.documentElement.dataset.project;
   });
 });

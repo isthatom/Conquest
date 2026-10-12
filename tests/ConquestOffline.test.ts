@@ -1,9 +1,9 @@
 import { Difficulty } from "@openfront/engine-api/game/GameTypes";
 import { EventBus } from "@openfront/shared/EventBus";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { ClientEnv } from "../src/client/ClientEnv";
 import type { LobbyConfig } from "../src/client/ClientGameRunner";
 import { LocalServer } from "../src/client/LocalServer";
-import { ClientEnv } from "../src/client/ClientEnv";
 import { Transport } from "../src/client/Transport";
 import { createMatchConfig } from "../src/client/conquest/MatchConfig";
 
@@ -24,9 +24,9 @@ function lobby(): LobbyConfig {
   };
 }
 
-describe("EmpireFront credential-free local sessions", () => {
+describe("Conquest credential-free local sessions", () => {
   beforeEach(() => {
-    document.documentElement.dataset.project = "empirefront";
+    document.documentElement.dataset.project = "conquest";
     vi.useFakeTimers();
   });
   afterEach(() => {

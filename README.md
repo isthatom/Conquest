@@ -1,4 +1,4 @@
-# EmpireFront (Conquest)
+# Conquest
 
 An independent personal strategy-game project based on [OpenFront](https://github.com/openfrontio/OpenFrontIO). **Phase 1: local single-player foundation.** The active launcher uses OpenFront's simulation, renderer, AI, combat and construction. The planned civilian population, taxation, economic buildings and research systems are not implemented yet.
 
@@ -38,9 +38,9 @@ npm run preview
 
 ## Attribution and licensing
 
-© OpenFront and Contributors. EmpireFront is independently modified and is not an official OpenFront release or endorsed by OpenFront.
+© OpenFront and Contributors. Conquest is independently modified and is not an official OpenFront release or endorsed by OpenFront.
 
-Source code is [AGPL-3.0 with additional attribution/non-misrepresentation terms](LICENSE). Imported open assets in `resources/` are [CC BY-SA 4.0](LICENSE-ASSETS), attributed to OpenFront. Proprietary assets were not imported. The EmpireFront favicon and launcher are original modifications; the favicon is offered under CC BY-SA 4.0. Modified source, build instructions and license notices must remain available when distributing or hosting this derivative. The UI links to this repository as corresponding source: deploy only after the source for the deployed version is pushed there. No original upstream branding font or proprietary music is used.
+Source code is [AGPL-3.0 with additional attribution/non-misrepresentation terms](LICENSE). Imported open assets in `resources/` are [CC BY-SA 4.0](LICENSE-ASSETS), attributed to OpenFront. Proprietary assets were not imported. The Conquest favicon and launcher are original modifications; the favicon is offered under CC BY-SA 4.0. Modified source, build instructions and license notices must remain available when distributing or hosting this derivative. The UI links to this repository as corresponding source: deploy only after the source for the deployed version is pushed there. No original upstream branding font or proprietary music is used.
 
 ## Preserved work and limitations
 

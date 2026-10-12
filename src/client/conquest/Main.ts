@@ -45,8 +45,8 @@ form.addEventListener("submit", async (event) => {
     const ready = new Promise<void>((resolve, reject) => {
       const cleanup = () => {
         clearTimeout(timer);
-        document.removeEventListener("empirefront-game-ready", onReady);
-        document.removeEventListener("empirefront-game-failed", onFailed);
+        document.removeEventListener("conquest-game-ready", onReady);
+        document.removeEventListener("conquest-game-failed", onFailed);
       };
       const onReady = () => {
         cleanup();
@@ -60,10 +60,10 @@ form.addEventListener("submit", async (event) => {
         cleanup();
         reject(new Error("Map preparation timed out. Please retry."));
       }, 120_000);
-      document.addEventListener("empirefront-game-ready", onReady, {
+      document.addEventListener("conquest-game-ready", onReady, {
         once: true,
       });
-      document.addEventListener("empirefront-game-failed", onFailed, {
+      document.addEventListener("conquest-game-failed", onFailed, {
         once: true,
       });
     });

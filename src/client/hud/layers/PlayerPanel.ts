@@ -24,7 +24,7 @@ import "../../components/EquippedCosmeticsRow";
 import "../../components/LevelBadge";
 import { actionButton } from "../../components/ui/ActionButton";
 import "../../components/ui/Divider";
-import { isEmpireFrontStandalone } from "../../conquest/Project";
+import { isConquestStandalone } from "../../conquest/Project";
 import { Controller } from "../../Controller";
 import {
   CloseViewEvent,
@@ -161,7 +161,7 @@ export class PlayerPanel extends LitElement implements Controller {
     }
 
     // Memoised: normally answered from the profile loaded at sign-in.
-    if (!isEmpireFrontStandalone()) {
+    if (!isConquestStandalone()) {
       void getUserMe().then((me) => {
         this.ownLevelBadge = ownLevelBadgeFrom(me);
       });

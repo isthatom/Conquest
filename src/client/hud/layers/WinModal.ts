@@ -20,7 +20,7 @@ import type { GameXpPanelState } from "../../components/GameXpPanel";
 import type { LegendCeremony } from "../../components/LegendCeremony";
 import "../../components/PurchaseButton";
 import "../../components/SteamWishlist";
-import { isEmpireFrontStandalone } from "../../conquest/Project";
+import { isConquestStandalone } from "../../conquest/Project";
 import { Controller } from "../../Controller";
 import {
   fetchCosmetics,
@@ -408,7 +408,7 @@ export class WinModal extends LitElement implements Controller {
   }
 
   async loadPatternContent() {
-    if (isEmpireFrontStandalone()) {
+    if (isConquestStandalone()) {
       this.patternContent = html``;
       return;
     }
@@ -520,7 +520,7 @@ export class WinModal extends LitElement implements Controller {
    * that just says so, and the poll starts when the game really ends.
    */
   private async updateXp(gameOver: boolean): Promise<void> {
-    if (isEmpireFrontStandalone()) return;
+    if (isConquestStandalone()) return;
     if (this.xpPolling) return;
     // Normally here since the game started; tried again should that fetch
     // have failed.

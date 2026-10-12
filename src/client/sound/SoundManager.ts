@@ -1,7 +1,7 @@
 import { assetUrl } from "@openfront/shared/AssetUrls";
 import { EventBus } from "@openfront/shared/EventBus";
 import { Howl } from "howler";
-import { isEmpireFrontStandalone } from "../conquest/Project";
+import { isConquestStandalone } from "../conquest/Project";
 import { AudioMixer, PlayableCategory, streamsMusic } from "./AudioMixer";
 import {
   AmbienceTrack,
@@ -36,7 +36,7 @@ export class SoundManager {
     private readonly eventBus: EventBus,
     private readonly mixer: AudioMixer,
   ) {
-    if (!isEmpireFrontStandalone()) this.buildBackgroundMusic();
+    if (!isConquestStandalone()) this.buildBackgroundMusic();
 
     this.onPlaySoundEffect = (e) => this.mixer.play(e.effect);
     this.onSetAmbience = (e) => this.setAmbience(e.track, e.gain);
@@ -117,7 +117,7 @@ export class SoundManager {
     this.safely("unload failed background music", () => failed.unload());
     this.backgroundMusic = null;
     this.musicStarted = false;
-    if (!isEmpireFrontStandalone()) this.buildBackgroundMusic();
+    if (!isConquestStandalone()) this.buildBackgroundMusic();
   }
 
   dispose(): void {

@@ -24,7 +24,7 @@ import { z } from "zod";
 import { getApiBase } from "./Api";
 import { getAuthHeader, getPersistentID } from "./Auth";
 import { LobbyConfig } from "./ClientGameRunner";
-import { isEmpireFrontStandalone } from "./conquest/Project";
+import { isConquestStandalone } from "./conquest/Project";
 import {
   GameSpeedDownIntentEvent,
   GameSpeedUpIntentEvent,
@@ -159,7 +159,7 @@ export class LocalServer {
       myClientID: this.lobbyConfig.gameRecord ? undefined : this.clientID,
     } satisfies ServerStartGameMessage);
     // Last, so a start() that throws above leaves no interval behind.
-    if (!this.isReplay && !isEmpireFrontStandalone()) {
+    if (!this.isReplay && !isConquestStandalone()) {
       this.stopHeartbeat = startSingleplayerHeartbeat(
         this.lobbyConfig.gameStartInfo.gameID,
       );
@@ -299,7 +299,7 @@ export class LocalServer {
   }
 
   private archiveGameRecord(unloading: boolean) {
-    if (isEmpireFrontStandalone()) return;
+    if (isConquestStandalone()) return;
     if (this.archived || this.archiveInFlight) {
       return;
     }

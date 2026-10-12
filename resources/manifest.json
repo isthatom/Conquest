@@ -1,7 +1,7 @@
 {
   "icons": [
     {
-      "src": "/images/EmpireFront.svg",
+      "src": "/images/Conquest.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
@@ -12,8 +12,8 @@
   "display": "standalone",
   "dir": "auto",
   "lang": "en",
-  "name": "EmpireFront",
-  "short_name": "EmpireFront",
+  "name": "Conquest",
+  "short_name": "Conquest",
   "start_url": "/",
   "id": "/"
 }

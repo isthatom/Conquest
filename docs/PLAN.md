@@ -1,6 +1,6 @@
-# EmpireFront phased development plan
+# Conquest phased development plan
 
-EmpireFront now builds on OpenFront rather than the original independent Canvas prototype. Preserve upstream attribution and document each modification. Keep engine package names stable to make upstream changes easier to review; the user-facing project name is EmpireFront. The archive plan records the original design, not the current implementation.
+Conquest now builds on OpenFront rather than the original independent Canvas prototype. Preserve upstream attribution and document each modification. Keep engine package names stable to make upstream changes easier to review; the user-facing project name is Conquest. The archive plan records the original design, not the current implementation.
 
 ## Phase 1 — Playable, attributed foundation (current)
 
@@ -10,7 +10,7 @@ Acceptance: dependency installation without lifecycle scripts, relevant simulati
 
 ## Phase 2 — Civilian population and taxation
 
-Add an opt-in EmpireFront rule set to the deterministic engine, not a browser-only resource counter. Separate civilians from existing troops. Capacity depends on controlled territory; tax rate trades income against growth. Use fixed-tick arithmetic and configuration constants. Extend start-config validation, worker updates and replay/snapshot serialization together. Show civilians, capacity, growth, treasury/income and a tax slider. AI uses the same economic commands. Keep the inherited gold/troop system working when the rule set is off; avoid double-counting inherited passive income and troop regeneration when it is on.
+Add an opt-in Conquest rule set to the deterministic engine, not a browser-only resource counter. Separate civilians from existing troops. Capacity depends on controlled territory; tax rate trades income against growth. Use fixed-tick arithmetic and configuration constants. Extend start-config validation, worker updates and replay/snapshot serialization together. Show civilians, capacity, growth, treasury/income and a tax slider. AI uses the same economic commands. Keep the inherited gold/troop system working when the rule set is off; avoid double-counting inherited passive income and troop regeneration when it is on.
 
 Acceptance: deterministic growth/income tests, tax bounds and command validation, equivalent replay results, no treasury/population underflow, and a browser demonstration of the tax/growth tradeoff. Choose rates through playtests; a twenty-minute timer alone does not establish balanced pacing.
 

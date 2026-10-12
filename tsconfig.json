@@ -1,1 +1,27 @@
-{"compilerOptions":{"target":"ES2022","module":"ESNext","moduleResolution":"Bundler","strict":true,"noEmit":true,"lib":["ES2022","DOM"],"resolveJsonModule":true,"skipLibCheck":true},"include":["src"]}
+// https://www.typescriptlang.org/tsconfig/
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "resources/*": ["./resources/*"],
+      "src/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "packages/**/*",
+    "resources/**/*",
+    "proprietary/**/*",
+    "generated/**/*",
+    "tests/**/*",
+    "src/scripts",
+    "scripts/replay",
+    "scripts/split-packages",
+    "vite.config.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    // Only the engine packages' own projects read it, without the DOM lib.
+    "packages/engine-api/globals.d.ts"
+  ]
+}

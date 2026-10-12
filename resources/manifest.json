@@ -1,0 +1,19 @@
+{
+  "icons": [
+    {
+      "src": "/images/EmpireFront.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "orientation": "portrait",
+  "display_override": ["fullscreen", "minimal-ui"],
+  "display": "standalone",
+  "dir": "auto",
+  "lang": "en",
+  "name": "EmpireFront",
+  "short_name": "EmpireFront",
+  "start_url": "/",
+  "id": "/"
+}

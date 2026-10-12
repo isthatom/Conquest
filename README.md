@@ -1,34 +1,49 @@
-# EmpireFront
+# EmpireFront (Conquest)
 
-An original browser strategy game project. **Milestone 1: map prototype** is implemented; conquest gameplay is planned. See [architecture and roadmap](docs/PLAN.md) for the game-state design, tradeoffs, milestones and acceptance criteria.
+An independent personal strategy-game project based on [OpenFront](https://github.com/openfrontio/OpenFrontIO). **Phase 1: local single-player foundation.** The active launcher uses OpenFront's simulation, renderer, AI, combat and construction. The planned civilian population, taxation, economic buildings and research systems are not implemented yet.
 
-## Setup
+See [phased roadmap](docs/PLAN.md), [upstream provenance](docs/UPSTREAM.md), and the preserved [original prototype plan](docs/archive/ORIGINAL-PROTOTYPE-PLAN.md).
 
-Use Node.js 22.12+ (Node 24 recommended) and npm. From the repository root:
+## Local setup
+
+Requires Node **24.15+ within Node 24**, and npm **12.1+ within npm 12**. Use the existing checkout; no extra worktree is needed. Install dependencies without lifecycle scripts:
 
 ```sh
-npm ci
+npm run inst
 npm run dev
 ```
 
-In this cloud environment, use `npm ci --cache /workspace/.npm-cache` because the default home cache is unavailable.
+The development client uses port **9000**. Select your empire name, AI count and difficulty, then start an expedition on a compact Europe, Pangaea or Onion map. Choose a land spawn, expand and build using the inherited controls. Use the End expedition button to return to the menu. Hardware-accelerated WebGL2 is required for normal gameplay. For headless/cloud verification only, append `?software-rendering=1` to the page URL to explicitly allow slow software rendering; this does not validate GPU performance. Test mode selects the small Onion map by default to reduce software-rendering load; you can still choose a different map.
 
-Vite serves the app on port 5173. No database, credentials or external assets are needed. The renderer uses Canvas 2D and system fonts.
+This workflow runs locally in the browser/worker and needs no account, API key, database or game server. It downloads local map assets from the development server.
 
-## Controls
-
-Click unclaimed land to found your empire. Drag to pan; scroll or use +/− to zoom; Fit map reframes the world. Inspect terrain by hovering. New expedition resets the original seeded map. Keyboard: focus the map, use arrow keys to select cells, Enter to settle, +/− to zoom. Touch supports one-finger drag and tap; use zoom buttons on touch devices.
-
-## Validation
+For this cloud environment, npm 12 is installed under `/workspace/conquest-toolchain`. Activate it and use the writable cache:
 
 ```sh
-npm test
-npm run typecheck
-npm run build
+export PATH="/workspace/conquest-toolchain/node_modules/.bin:$PATH"
+npm run inst -- --cache /workspace/.npm-cache --no-audit --no-fund
+npm run dev -- --host 0.0.0.0 --strictPort
 ```
 
-`npm run preview` serves the production build. Tests cover deterministic generation, ownership validation, edge hit testing, adjacency, and cursor-anchored zoom. Browser smoke validation should check rendering, click selection, pan, zoom and reset. Map size/seed/camera limits are configurable in `src/config/map.json`.
+## Checks and production bundle
 
-## Current limitations
+```sh
+npm run test:conquest
+npm run typecheck
+npm run build
+npm run preview
+```
 
-This is an interactive map prototype, not a complete playable match. There is no expansion, AI, economy, military, research, timer or multiplayer yet. Ownership supports empire IDs; the prototype creates only the player empire. Terrain has no combat effect yet. The map uses a procedural grid, rather than geographic assets. No balancing or 15–30 minute match-duration claim is made.
+`test:conquest` runs derivative configuration/offline tests plus inherited player, attack and WebGL initialization tests with two workers. Only Europe, Pangaea and Onion map assets are retained in this phase. The imported repository contains additional suites; `npm test` is the upstream comprehensive runner, including server tests beyond this phase. `npm run build` emits a standalone client to `static/`; `npm run preview` serves it on port 9000. The upstream `build-prod` and deployment scripts target OpenFront's server/CDN infrastructure and are not the standalone build instructions for this project.
+
+## Attribution and licensing
+
+© OpenFront and Contributors. EmpireFront is independently modified and is not an official OpenFront release or endorsed by OpenFront.
+
+Source code is [AGPL-3.0 with additional attribution/non-misrepresentation terms](LICENSE). Imported open assets in `resources/` are [CC BY-SA 4.0](LICENSE-ASSETS), attributed to OpenFront. Proprietary assets were not imported. The EmpireFront favicon and launcher are original modifications; the favicon is offered under CC BY-SA 4.0. Modified source, build instructions and license notices must remain available when distributing or hosting this derivative. The UI links to this repository as corresponding source: deploy only after the source for the deployed version is pushed there. No original upstream branding font or proprietary music is used.
+
+## Preserved work and limitations
+
+The original standalone map prototype remains in commit `2c77fcedca2852a00b07e6bd0fc06b78c96f1dba` and local branch `prototype-map-archive`; a separate backup was created before migration. This repository retains its existing Conquest history.
+
+The local launcher deliberately does not expose upstream matchmaking, store, login, paid cosmetics or advertising. Server/deployment source remains as reference material, but production multiplayer infrastructure is out of scope. Some inherited game/settings UI may still mention upstream features; this phase does not guarantee those integrations. The default match limit is twenty minutes; balance around a 15–30 minute match requires later testing.
